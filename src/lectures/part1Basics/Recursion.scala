@@ -1,9 +1,8 @@
-package part1Basics
+package lectures.part1Basics
 
 import scala.annotation.tailrec
-import scala.jdk.Accumulator
 
-object Recursion  extends App {
+object Recursion extends App {
 
   def factorial(n: Int): Int =
     if (n <= 1) 1
@@ -38,20 +37,21 @@ object Recursion  extends App {
    */
   // Solution 1
 
-    def ConcatFunc(n: Int, aString: String): String = {
-      def ConcatHelper(x: Int, accumulator: String): String =
-        if (x == 1) accumulator
-        else ConcatHelper(x - 1, accumulator + " " + accumulator)
+  def ConcatFunc(n: Int, aString: String): String = {
+    def ConcatHelper(x: Int, accumulator: String): String =
+      if (x == 1) accumulator
+      else ConcatHelper(x - 1, accumulator + " " + accumulator)
 
-      ConcatHelper(n, aString)
+    ConcatHelper(n, aString)
   }
+
   println(ConcatFunc(2, "HELLO"))
 
   // Solution 1- alternative
   @tailrec
   def concatenateTailRec(aString: String, n: Int, accumulator: String): String =
     if (n <= 0) accumulator
-    else concatenateTailRec(aString, n-1, aString + accumulator)
+    else concatenateTailRec(aString, n - 1, aString + accumulator)
 
   println(concatenateTailRec("hello", 3, ""))
 
@@ -66,13 +66,14 @@ object Recursion  extends App {
 
     isPrimeTailRec(n / 2, true)
   }
-println(isPrime(2003))
+
+  println(isPrime(2003))
 
   // Solution 3
 
   def aFibonacciFunctionRec(n: Int): Int = {
     def FibonacciHelper(i: Int, last: Int, nextToLast: Int): Int =
-      if(i >= n) last
+      if (i >= n) last
       else FibonacciHelper(i + 1, last + nextToLast, last)
 
     if (n <= 2) 1

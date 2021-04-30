@@ -1,4 +1,4 @@
-package part1Basics
+package lectures.part1Basics
 
 // extends App added to
 object Functions extends App {
@@ -6,15 +6,17 @@ object Functions extends App {
   def aFunction(a: String, b: Int): String = {
     a + " " + b
   }
+
   println(aFunction("hello", 3))
 
   def aParameterlessFunction(): Int = 42
+
   println(aParameterlessFunction())
   println(aParameterlessFunction()) //parameterless functions can be defined without parenthesis
 
   def aRepeatedFunction(aString: String, n: Int): String = {
     if (n == 1) aString
-    else aString + aRepeatedFunction(aString, n-1)
+    else aString + aRepeatedFunction(aString, n - 1)
   }
 
   println(aRepeatedFunction("hello", 3))
@@ -26,8 +28,9 @@ object Functions extends App {
   def aBigFunction(n: Int): Int = {
     def aSmallerFunction(a: Int, b: Int): Int = a + b
 
-    aSmallerFunction(n, n-1)
+    aSmallerFunction(n, n - 1)
   }
+
   println(aFunctionWithSideEffects("Hello"))
 
   //Exercises
@@ -43,15 +46,17 @@ object Functions extends App {
   */
   // Solution 1
   def aGreetingFunction(name: String, age: Int): String = {
-   "Hi, my name is " + name + " and I am " + age + " years old"
+    "Hi, my name is " + name + " and I am " + age + " years old"
   }
+
   println(aGreetingFunction("Enes", 32))
 
   // Solution 2
   def aFactorialFunction(anInteger: Int): Int = {
     if (anInteger == 1 || anInteger == 0) 1
-    else anInteger * aFactorialFunction(anInteger-1: Int)
+    else anInteger * aFactorialFunction(anInteger - 1: Int)
   }
+
   println(aFactorialFunction(4))
 
   // Solution 3
@@ -59,15 +64,18 @@ object Functions extends App {
     if (anInteger == 1 || anInteger == 2) 1
     else aFibonacciFunction(anInteger - 1) + aFibonacciFunction(anInteger - 2)
   }
+
   print(aFibonacciFunction(8))
 
   // Solution 4
   def isPrime(n: Int): Boolean = {
     def isPrimeUntil(t: Int): Boolean =
       if (t <= 1) true
-      else n % t != 0 && isPrimeUntil(t-1)
+      else n % t != 0 && isPrimeUntil(t - 1)
+
     isPrimeUntil(n / 2)
   }
+
   println(isPrime(37))
   println(isPrime(2003))
   println(isPrime(37 * 17))

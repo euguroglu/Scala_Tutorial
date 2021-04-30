@@ -1,6 +1,6 @@
-package part1Basics
+package lectures.part1Basics
 
-object Expressions extends App{
+object Expressions extends App {
 
   val x = 1 + 2 //Expression
   println(x)
@@ -22,17 +22,17 @@ object Expressions extends App{
 
   // IF expression
   val aCondition = true
-  val aConditionedValue = if(aCondition) 5 else 3 //if expression
+  val aConditionedValue = if (aCondition) 5 else 3 //if expression
   println(aConditionedValue)
-  println(if(aCondition) 5 else 3)
+  println(if (aCondition) 5 else 3)
 
   var i = 0
   while (i < 10) {
     println(i)
     i += 1
   }
- // Never use while loops in scala
- // Everything in scala is an expression
+  // Never use while loops in scala
+  // Everything in scala is an expression
 
   val aWeirdValue = (aVariable = 3) // Unit == void
   println(aWeirdValue)
@@ -50,18 +50,18 @@ object Expressions extends App{
   }
 
   println(aCodeBlock)
- // val anotherValue = z + 1 (z is not visible outside above code block)
- // So this expression gives error
+  // val anotherValue = z + 1 (z is not visible outside above code block)
+  // So this expression gives error
 
- //1.Differences between "hello world" vs println("hello world") ?
- //2.
+  //1.Differences between "hello world" vs println("hello world") ?
+  //2.
 
   val someValue = {
     2 < 3
   }
   println(someValue)
   val someOtherValue = {
-    if(someValue) 239 else 984
+    if (someValue) 239 else 984
     42
   }
   println(someOtherValue)
