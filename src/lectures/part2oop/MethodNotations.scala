@@ -4,24 +4,28 @@ import scala.language.postfixOps
 
 object MethodNotations extends App {
 
-  class Person(val name: String, favoriteMovie: String) {
+  class Person(val name: String, val age: Int, favoriteMovie: String) {
     def likes(movie: String): Boolean = movie == favoriteMovie
-    def hangOutWith(person: Person): String = s"${this.name} is hanging out with ${person.name}"
+    def +(person: Person): String = s"${this.name} is hanging out with ${person.name}"
+    def +(nickname: String): Person = new Person(s"$name ($nickname)", this.age, favoriteMovie)
     def unary_! : String = s"$name, what the heck!"
+    def unary_+ : Person = new Person(s"$name", age+1, favoriteMovie)
     def isAlive: Boolean = true
-    def apply(): String = s"Hi, my name is $name and i like $favoriteMovie"
+    def learn: String = s"$name learns Scala"
+    def apply(): String = s"Hi, my name is $name, I am $age years old and i like $favoriteMovie"
+    def apply(n: Int): String = s"$name watch $favoriteMovie $n times"
   }
 
-  val mary = new Person("Mary", "Inception")
+  val mary = new Person("Mary", 20, "Inception")
   println(mary.likes("Inception"))
   println(mary likes "Inception") // equivalent
   //infix notation = operator notation (syntactic sugar)
   //Method with the single parameter can be used in infix notation
 
   // "operators" in Scala
-  val tom = new Person("Tom", "Fight Club")
-  println(mary hangOutWith tom)
-  println(mary.hangOutWith(tom))
+  val tom = new Person("Tom", age=30, "Fight Club")
+  println(mary + tom)
+  println(mary.+(tom))
 
   //All operators are methods.
 
@@ -41,9 +45,10 @@ object MethodNotations extends App {
   println(mary.apply())
   println(mary()) // equivalent
 
+
   /*
   1. Overload the + operator
-   mary + "the rockstar" => new person "Mary (the rockstar)"
+   mary + "the rockstar" => new person "Mary (the rockstar)",
   2. Add an age to Person class
    Add a unary + operator => new person with the age + 1
    +mary => mary with the age incrementer
@@ -53,5 +58,18 @@ object MethodNotations extends App {
   4. Overload the apply method
    mary.apply(2) => "Marry watched inception 2 times"
    */
+  //Solution 1
+  println((mary + "the rockstar")())
+  println((mary + "the rockstar").apply())
 
+  //Solution 2
+  val new_mary = +mary
+  println(new_mary.age)
+
+  //Solution 3
+  print(mary learn)
+
+  //Solution 4
+  println(mary.apply(2))
 }
+
